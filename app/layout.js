@@ -15,14 +15,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className=" scroll-smooth" lang="en">
-      
       <body className={inter.className}>
-      <div className="bg-red-50">
+      <main className="bg-red-50 h-screen w-full">
       <Header/>
-        {children}
+        <div className="mt-20">{children}</div>
         <Footer/>
-        </div>
+        </main>
       </body>
+      
      </html>
   );
 }

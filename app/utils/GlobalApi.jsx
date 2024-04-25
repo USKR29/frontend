@@ -9,10 +9,13 @@ const getSliders=()=>axiosClient.get('/sliders?populate=*').then(resp=>{ return 
 
 const getProducts=()=>axiosClient.get('/stores?populate=*').then(resp=>{return resp.data.data});
 
-const getCatList=()=>axiosClient.get('/catgs?populate=*').then(resp=>{return resp.data.data})
+const getCatList=()=>axiosClient.get('/catgs?populate=*').then(resp=>{return resp.data.data});
+
+const getProductByCategory=(category)=>axiosClient.get('/stores?filters[catgs][cname][$in]='+category+"&populate=*").then(resp=>{return resp.data.data});
 
 export default{
   getSliders,
   getProducts,
-  getCatList
+  getCatList,
+  getProductByCategory
 }

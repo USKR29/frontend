@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Catlist({categoryList}) {
@@ -5,17 +7,22 @@ function Catlist({categoryList}) {
     
 
   return (
-<div className=' w- h-full flex flex-col '>
-    <div className=' w-[800px] bg-black  flex flex-col items-center justify-evenly overflow-auto rounded-3xl'>
-
+      <div className=' overflow-auto border-b-2 border-rose-100'>
+        <h1 className=' flex flex-col items-center p-2 text-2xl font-semibold text-red-700'>Categories: </h1>
+        <div className=' flex flex-row place-content-center gap-5 p-3'>
+          
         {categoryList.map((cat,index)=>(
-            <div className='flex gap-3 my-8 md:my-12 flex-wrap justify-center px-4 md:px-8 max-w-sm' key={index}>{
-                <div className='px-2 py-1 md:text-lg relative bg-orange-300 rounded-lg select-none hover:shadow hover:shadow-teal-500 hover:outline hover:outline-teal-600'>{cat.attributes.cname}</div>
+            <div className=' flex flex-col justify-items-center items-center bg-green-100 gap-3 p-3 w-[200px] rounded-lg hover:bg-green-300 hover:scale-110' key={index}>{
+                <Link href={'/products/'+cat.attributes.cname}><div className=''>{cat.attributes.cname}
+                <div className=' flex place-content-center'><Image src={'http://192.168.0.106:1337'+cat.attributes.icon.data.attributes.url} width={34} height={34}/></div>
+                </div></Link>
             }</div>
         ))}
+        </div>
+
+        </div>
         
-    </div>
-    </div>
+   
   )
 }
 
