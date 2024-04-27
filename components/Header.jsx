@@ -3,6 +3,21 @@
 import React, {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ShoppingBasketIcon } from 'lucide-react'
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import CartitemList from './CartitemList'
+
+
+
+
 const Header = () => {
 const [isOpen, setIsOpen] = useState(false)
 const toggle = () =>{
@@ -48,6 +63,17 @@ setIsOpen(!isOpen)
     </Link>
     </li>
     </ul>
+    <Sheet>
+  <SheetTrigger><ShoppingBasketIcon/></SheetTrigger>
+  <SheetContent className=' w-1/2'>
+    <SheetHeader>
+     <h2 className=' font-bold text-2xl'>My Cart</h2>
+      <SheetDescription>
+        <CartitemList/>
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
     </nav>
     </div>
     </header>

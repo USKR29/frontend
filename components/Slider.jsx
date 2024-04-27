@@ -9,7 +9,7 @@ function Slider({sliderList}) {
             <CarouselContent>
                 {sliderList.map((slider,index)=>(
                     <CarouselItem key={index} className=" w-full h-[300px] sm:h-[600px]">
-                        <Image src={process.env.NEXT_BACKEND_BASE_URL+slider.attributes.slideimg.data.attributes.url} width={1000} height={500} alt='banner' className=' object-cover w-full h-[300px] sm:h-[600px] rounded-md'/>
+                        <Image src={'http://192.168.0.106:1337'+slider.attributes.slideimg.data.attributes.url} width={1000} height={500} alt='banner' className=' object-cover w-full h-[300px] sm:h-[600px] rounded-md'/>
                     </CarouselItem>
                 ))}
                 
