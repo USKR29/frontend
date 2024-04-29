@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
       <Header/>
         <div className="mt-20">{children}</div>
         </GlobalProvider>
+        
         <Footer/>
         </main>
       </body>

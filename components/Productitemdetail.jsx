@@ -6,6 +6,7 @@ import { ShoppingBasket } from 'lucide-react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import CartContext from '@/context/CartContext'
+import { toast } from 'sonner'
 
 export const Productitemdetail = ({storeList}) => {
 
@@ -27,6 +28,8 @@ export const Productitemdetail = ({storeList}) => {
         quantity:quantity,
 
       })
+
+      toast.success('Add to cart sucessfully')
 
     }
 

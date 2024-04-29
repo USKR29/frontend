@@ -3,8 +3,11 @@ import { Trash2Icon } from 'lucide-react'
 import React, { useContext } from 'react'
 import { Button } from './ui/button'
 import Image from 'next/image'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 function CartitemList() {
+  const rounter = useRouter()
 
 const {deleteItemFromCart, cart} = useContext(CartContext)
 
@@ -23,12 +26,12 @@ const {deleteItemFromCart, cart} = useContext(CartContext)
                         <div>T: {(cartItem.price)}</div>
                       </div>
                       </div>
-                    <button onClick={()=>deleteItemFromCart(cartItem.product) }><Trash2Icon/></button>
+                    <button onClick={()=>deleteItemFromCart(cartItem.product, toast('Deleted sucessfully'))  }><Trash2Icon/></button>
                 </div>
             ) )}
             
             <div>Total items in cart: {cart?.cartItems?.length || 0 }</div>
-            <Button className='bg-green-500'>Checkout</Button>
+            <Button onClick={()=>rounter.push('/checkout')} className='bg-green-500'>Checkout</Button>
         </div>
       )}
         </div>
