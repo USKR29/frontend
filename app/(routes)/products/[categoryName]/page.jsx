@@ -9,6 +9,7 @@ import Catlist from '@/components/Catlist';
 
 
 
+
 async function ProductCategory({params}) {
 
   const categoryList=await GlobalApi.getCatList();
