@@ -13,9 +13,12 @@ const getCatList=()=>axiosClient.get('/catgs?populate=*').then(resp=>{return res
 
 const getProductByCategory=(category)=>axiosClient.get('/stores?filters[catgs][cname][$in]='+category+"&populate=*").then(resp=>{return resp.data.data});
 
+const getProductByID=(id)=>axiosClient.get('/stores?filters[id]='+id+'&populate=').then(resp=>{return resp.data.data})
+
 export default{
   getSliders,
   getProducts,
   getCatList,
-  getProductByCategory
+  getProductByCategory,
+  getProductByID
 }

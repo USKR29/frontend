@@ -3,6 +3,7 @@ import Link from 'next/link'
 import GlobalApi from '../utils/GlobalApi'
 import Productlist from '@/components/Productlist';
 import Catlist from '@/components/Catlist';
+import { Toaster } from 'sonner';
 
 async function page() {
 
@@ -15,6 +16,7 @@ async function page() {
     <div >
       <Catlist categoryList={categoryList} />
       <Productlist storeList={storeList}/>
+      <Toaster position='top-right'/>
     </div>
 
 

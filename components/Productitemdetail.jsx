@@ -1,16 +1,37 @@
 "use client"
 import Image from 'next/image'
+
 import { Button } from './ui/button'
 import { ShoppingBasket } from 'lucide-react'
 import { useState } from 'react'
+import { useContext } from 'react'
+import CartContext from '@/context/CartContext'
+import { toast } from 'sonner'
 
 export const Productitemdetail = ({storeList}) => {
+
+ const { addItemToCart} = useContext(CartContext)
 
     const [productTotalPrice,setProductToltalPrice]=useState(
         storeList.attributes.Price
     )
 
     const [quantity,setQuantity]=useState(1);
+
+    const addToCartHandler = () => {
+      addItemToCart({
+        product: storeList.id,
+        itemprice: storeList.attributes.Price ,
+        name: storeList.attributes.name,
+        price: (quantity * productTotalPrice).toFixed(2),
+        image: storeList.attributes.simg.data.attributes.url,
+        quantity:quantity,
+
+      })
+
+      toast.success('Add to cart sucessfully')
+
+    }
 
    
   return (
@@ -35,7 +56,7 @@ export const Productitemdetail = ({storeList}) => {
                 
             </div>
             <h2>Total Price: INR {(quantity * productTotalPrice).toFixed(2) }</h2>
-            <Button className=' flex gap-3'>
+            <Button className=' flex gap-3' onClick={addToCartHandler}>
             
                 <ShoppingBasket/>Add to cart</Button>
                 <h2 className=' items-baseline'>Category: <span className="whitespace-nowrap rounded-full bg-green-100 px-2.5 py-0.5 text-sm text-green-700"> {storeList.attributes.catgs.data[0].attributes.cname}</span></h2>
